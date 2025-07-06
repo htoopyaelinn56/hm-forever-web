@@ -253,7 +253,7 @@ const items: Item[] = [
 const Home: React.FC = () => {
     return (
         <div>
-            <AppBar title="Home"/>
+            <AppBar title="H&M Forever"/>
             <div className="home-container">
                 <div className="item-grid">
                     {items.map((item, idx) => {

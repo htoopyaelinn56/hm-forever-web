@@ -22,10 +22,42 @@
   transition: background 0.2s, margin 0.3s, border-radius 0.3s, filter 0.3s, backdrop-filter 0.3s;
 }
 
+.custom-appbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+}
+
+.custom-appbar-back {
+  background: none;
+  border: none;
+  padding: 0 4px 0 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  width: 36px;
+  transition: background 0.15s;
+}
+
+.custom-appbar-back:focus, .custom-appbar-back:hover {
+  background: rgba(170, 77, 255, 0.08);
+  border-radius: 50%;
+}
+
+.custom-appbar-back svg {
+  display: block;
+}
+
 .custom-appbar-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f3f5ff;
+  letter-spacing: 0.5px;
+  margin: 0;
+  padding: 0;
 }
 
 .custom-appbar-search input {
