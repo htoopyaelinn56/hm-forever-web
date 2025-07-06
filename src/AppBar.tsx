@@ -8,9 +8,16 @@ interface AppBarProps {
 const AppBar: React.FC<AppBarProps> = ({ title }) => {
   const [scrolled, setScrolled] = useState(false);
 
+  // did update widget flutter equivalent title != previous title reset scroll to top
+    useEffect(() => {
+        setScrolled(false);
+        // set scroll position to top 0 too
+        window.scrollTo(0, 0);
+    }, [title]);
+
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
