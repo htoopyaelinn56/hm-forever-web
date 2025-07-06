@@ -251,6 +251,11 @@ body {
         height: 200px;
         min-height: 120px;
     }
+
+    .card-stack:hover .card-bg{
+        top: 8px;
+        left: 8px;
+    }
 }
 
 .tooltip-parent {

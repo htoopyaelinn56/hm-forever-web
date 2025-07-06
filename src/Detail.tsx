@@ -46,8 +46,6 @@ const Detail: React.FC = () => {
     <div>
       <AppBar title="Detail" />
       <div className="detail-container">
-        <Link to="/" className="detail-back">&larr; Back to Home</Link>
-        {/* ...existing code... */}
       </div>
     </div>
   );

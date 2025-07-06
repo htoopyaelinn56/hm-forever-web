@@ -16,7 +16,7 @@
 }
 
 .custom-appbar.scrolled {
-  background: rgba(170, 77, 255, 0.3);
+  background: rgb(73, 9, 9, .3);
   backdrop-filter: blur(12px) brightness(1.15);
   -webkit-backdrop-filter: blur(12px) brightness(1.15);
   transition: background 0.2s, margin 0.3s, border-radius 0.3s, filter 0.3s, backdrop-filter 0.3s;
@@ -40,4 +40,10 @@
 
 .custom-appbar-search input::placeholder {
   color: #888;
+}
+
+@media (max-width: 600px) {
+  .custom-appbar-search input{
+    width: 100px;
+  }
 }
