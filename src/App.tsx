@@ -5,7 +5,7 @@ import Detail from './Detail';
 import './App.css';
 
 function App() {
-  const [scrolled, setScrolled] = useState(false);
+  const [, setScrolled] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AppBar from './AppBar';
 
 // Utility to cycle through a fixed set of background colors for item name and price
 const itemHexColors = [
@@ -95,46 +96,49 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="home-container">
-      <div className="item-grid">
-        {items.map((item, idx) => {
-          const borderColor = getItemHexColor(idx);
-          const bgColor = hexToRgba(borderColor, 0.5); // semi-transparent background
-          return (
-            <Link key={item.id} to={`/detail/${item.id}`} className="item-link">
-              <div
-                className="card-stack tooltip-parent"
-                onMouseEnter={e => handleMouseEnter(e, item.description)}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-              >
-                <div className="card-bg" style={{ background: bgColor }} />
-                <div className="item-card">
-                  <img src={item.image} alt={item.name} className="item-image-full" style={{ background: bgColor }} />
-                  <div className="item-info">
-                    <div className="item-name-left">{item.name}</div>
-                    <div className="item-price">{item.price}</div>
+    <div>
+      <AppBar title="Home" />
+      <div className="home-container">
+        <div className="item-grid">
+          {items.map((item, idx) => {
+            const borderColor = getItemHexColor(idx);
+            const bgColor = hexToRgba(borderColor, 0.5); // semi-transparent background
+            return (
+              <Link key={item.id} to={`/detail/${item.id}`} className="item-link">
+                <div
+                  className="card-stack tooltip-parent"
+                  onMouseEnter={e => handleMouseEnter(e, item.description)}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="card-bg" style={{ background: bgColor }} />
+                  <div className="item-card">
+                    <img src={item.image} alt={item.name} className="item-image-full" style={{ background: bgColor }} />
+                    <div className="item-info">
+                      <div className="item-name-left">{item.name}</div>
+                      <div className="item-price">{item.price}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-      {tooltip.visible && (
-        <div
-          className="item-tooltip floating-tooltip"
-          style={{
-            position: 'fixed',
-            left: tooltip.x + 16,
-            top: tooltip.y + 16,
-            pointerEvents: 'none',
-            zIndex: 9999,
-          }}
-        >
-          {tooltip.content}
+              </Link>
+            );
+          })}
         </div>
-      )}
+        {tooltip.visible && (
+          <div
+            className="item-tooltip floating-tooltip"
+            style={{
+              position: 'fixed',
+              left: tooltip.x + 16,
+              top: tooltip.y + 16,
+              pointerEvents: 'none',
+              zIndex: 9999,
+            }}
+          >
+            {tooltip.content}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import AppBar from './AppBar';
 
 // Example static data for cosmetics (should match Home.tsx)
 const items = [
@@ -42,9 +43,12 @@ const Detail: React.FC = () => {
   if (!item) return <div className="detail-notfound">Item not found.</div>;
 
   return (
-    <div className="detail-container">
-      <Link to="/" className="detail-back">&larr; Back to Home</Link>
-
+    <div>
+      <AppBar title="Detail" />
+      <div className="detail-container">
+        <Link to="/" className="detail-back">&larr; Back to Home</Link>
+        {/* ...existing code... */}
+      </div>
     </div>
   );
 };
