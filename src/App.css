@@ -166,7 +166,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 32px;
-    padding-top: 56px;
+    padding: 40px 20px 15px 15px;
 }
 
 .detail-back {
@@ -210,12 +210,6 @@ body {
     margin: 0 0 12px 0;
 }
 
-.detail-description {
-    font-size: 1.1rem;
-    color: #444;
-    text-align: center;
-    margin: 0;
-}
 
 .detail-notfound {
     color: #e91e63;

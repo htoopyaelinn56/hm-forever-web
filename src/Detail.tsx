@@ -1,6 +1,7 @@
-import React from 'react';
-import {useParams, Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import {useParams} from 'react-router-dom';
 import AppBar from './AppBar';
+import './Detail.css';
 
 // Example static data for cosmetics (should match Home.tsx)
 const items = [
@@ -189,15 +190,41 @@ const items = [
 const Detail: React.FC = () => {
     const {id} = useParams<{ id: string }>();
     const item = items.find(i => i.id === Number(id));
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     if (!item) return <div className="detail-notfound">Item not found.</div>;
 
     return (
         <div>
-            <AppBar title="Detail" onBackClick={
-                () => window.history.back()
-            }/>
+            <AppBar title="Detail" onBackClick={() => window.history.back()}/>
             <div className="detail-container">
+                <div className="detail-main-image-wrapper">
+                    {!imageLoaded && (
+                        <div className="detail-main-image-placeholder" />
+                    )}
+                    <img
+                        className="detail-main-image"
+                        src={item.image}
+                        alt={item.name}
+                        style={{ display: imageLoaded ? 'block' : 'none' }}
+                        onLoad={() => setImageLoaded(true)}
+                    />
+                </div>
+                <div className="detail-info">
+                    <h2 className="detail-title">{item.name}</h2>
+                    <div className="detail-price">$19.99</div>
+                    <div className="detail-description">{item.description}</div>
+                </div>
+                <div className="detail-description-images-grid">
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((n) => (
+                        <img
+                            key={n}
+                            className="detail-description-image"
+                            src={item.image}
+                            alt={`Description ${n}`}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
