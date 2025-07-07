@@ -216,7 +216,7 @@ const Detail: React.FC = () => {
                     <div className="detail-description">{item.description}</div>
                 </div>
                 <div className="detail-description-images-grid">
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((n) => (
+                    {[1, 2, 3, 4, 5].map((n) => (
                         <img
                             key={n}
                             className="detail-description-image"
