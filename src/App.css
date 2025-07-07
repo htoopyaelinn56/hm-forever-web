@@ -164,7 +164,6 @@ body {
 .detail-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-top: 32px;
     padding: 40px 20px 15px 15px;
 }
