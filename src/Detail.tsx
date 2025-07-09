@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import AppBar from './AppBar';
 import './Detail.css';
@@ -200,13 +200,13 @@ const Detail: React.FC = () => {
             <div className="detail-container">
                 <div className="detail-main-image-wrapper">
                     {!imageLoaded && (
-                        <div className="detail-main-image-placeholder" />
+                        <div className="detail-main-image-placeholder"/>
                     )}
                     <img
                         className="detail-main-image"
                         src={item.image}
                         alt={item.name}
-                        style={{ display: imageLoaded ? 'block' : 'none' }}
+                        style={{display: imageLoaded ? 'block' : 'none'}}
                         onLoad={() => setImageLoaded(true)}
                     />
                 </div>
@@ -215,17 +215,68 @@ const Detail: React.FC = () => {
                     <div className="detail-price">$19.99</div>
                     <div className="detail-description">{item.description}</div>
                 </div>
-                <div className="detail-description-images-grid">
-                    {[1, 2, 3, 4, 5].map((n) => (
-                        <img
-                            key={n}
-                            className="detail-description-image"
-                            src={item.image}
-                            alt={`Description ${n}`}
-                        />
-                    ))}
-                </div>
+                <ResponsiveGridComponent maxWidth={50} imageList={[
+                    item.image, item.image, item.image, item.image, item.image,
+                ]}/>
             </div>
+        </div>
+    );
+};
+
+// Custom hook similar to Flutter's SliverGridDelegateWithMaxCrossAxisExtent
+const useResponsiveGrid = (maxCrossAxisExtent = 200, crossAxisSpacing = 10) => {
+    const [columns, setColumns] = useState(1);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const updateColumns = () => {
+            if (containerRef.current) {
+                const containerWidth = containerRef.current.offsetWidth;
+                const availableWidth = containerWidth - crossAxisSpacing;
+                const itemWidth = maxCrossAxisExtent + crossAxisSpacing;
+                const calculatedColumns = Math.max(1, Math.floor(availableWidth / itemWidth));
+                setColumns(calculatedColumns);
+            }
+        };
+
+        updateColumns();
+        window.addEventListener('resize', updateColumns);
+
+        return () => window.removeEventListener('resize', updateColumns);
+    }, [maxCrossAxisExtent, crossAxisSpacing]);
+
+    return {containerRef, columns};
+};
+
+interface ResponsiveGridProps {
+    maxWidth?: number; // Optional because it has a default value
+    gap?: number;       // Optional because it has a default value
+    imageList?: string[]; // Array of strings, optional because it has a default value
+}
+
+// Reusable component
+const ResponsiveGridComponent = ({maxWidth = 200, gap = 10, imageList = []}: ResponsiveGridProps) => {
+    const {containerRef, columns} = useResponsiveGrid(maxWidth, gap);
+
+    return (
+        <div
+            ref={containerRef}
+            className="w-full"
+            style={{
+                display: 'grid',
+                gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                gap: `${gap}px`
+            }}
+        >
+            {imageList.map(item => (
+                <div key={item}>
+                    <img
+                        src={item}
+                        alt="Grid item"
+                        style={{width: '100%', background: '#e0e0e0', height: `${maxWidth}px`, borderRadius: '8px', objectFit: 'cover', border: '2px solid #000'}}
+                    />
+                </div>
+            ))}
         </div>
     );
 };
