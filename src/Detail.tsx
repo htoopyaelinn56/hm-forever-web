@@ -203,10 +203,9 @@ const Detail: React.FC = () => {
                         <div className="detail-main-image-placeholder"/>
                     )}
                     <img
-                        className="detail-main-image"
+                        className={`detail-main-image ${imageLoaded ? 'detail-main-image-visible' : 'detail-main-image-hidden'}`}
                         src={item.image}
                         alt={item.name}
-                        style={{display: imageLoaded ? 'block' : 'none'}}
                         onLoad={() => setImageLoaded(true)}
                     />
                 </div>
@@ -261,9 +260,8 @@ const ResponsiveGridComponent = ({maxWidth = 200, gap = 10, imageList = []}: Res
     return (
         <div
             ref={containerRef}
-            className="w-full"
+            className="responsive-grid-container"
             style={{
-                display: 'grid',
                 gridTemplateColumns: `repeat(${columns}, 1fr)`,
                 gap: `${gap}px`
             }}
@@ -273,7 +271,8 @@ const ResponsiveGridComponent = ({maxWidth = 200, gap = 10, imageList = []}: Res
                     <img
                         src={item}
                         alt="Grid item"
-                        style={{width: '100%', background: '#e0e0e0', height: `${maxWidth}px`, borderRadius: '8px', objectFit: 'cover', border: '2px solid #000'}}
+                        className="grid-item-image"
+                        style={{height: `${maxWidth}px`}}
                     />
                 </div>
             ))}
