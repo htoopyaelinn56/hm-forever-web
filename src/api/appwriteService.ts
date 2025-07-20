@@ -1,5 +1,3 @@
-import {Client, Databases} from 'appwrite';
-
 // TypeScript interface for ItemData
 export interface ItemData {
     id: string;
@@ -9,13 +7,6 @@ export interface ItemData {
     image: string;
 }
 
-// Appwrite client setup
-const client = new Client();
-client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Replace with your Appwrite endpoint
-    .setProject(process.env.REACT_APP_APPWRITE_PROJECT_ID!); // Use env variable
-
-const databases = new Databases(client);
 
 const APPWRITE_ENDPOINT = 'https://cloud.appwrite.io/v1';
 const APPWRITE_PROJECT = process.env.REACT_APP_APPWRITE_PROJECT_ID!;
@@ -33,6 +24,8 @@ export async function fetchItems(): Promise<ItemData[]> {
             'Content-Type': 'application/json',
         },
     });
+
+    console.log("res = ", res);
     if (!res.ok) throw new Error('Failed to fetch items');
     const response = await res.json();
     return response.documents.map((doc: any) => ({
