@@ -122,6 +122,12 @@ const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
                                 </Link>
                             );
                         })}
+                        {/* Add empty grid cells if filteredItems.length < 5 */}
+                        {filteredItems.length < 5 &&
+                            Array.from({ length: 5 - filteredItems.length }).map((_, idx) => (
+                                <div key={`empty-${idx}`} className="item-grid-empty" />
+                            ))
+                        }
                     </div>
                 </div>
             )}
