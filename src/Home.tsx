@@ -41,210 +41,210 @@ const items: Item[] = [
     {
         id: 1,
         name: 'Lipstick',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$12.99',
         description: 'A creamy lipstick for vibrant color.'
     },
     {
         id: 2,
         name: 'Foundation',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$18.50',
         description: 'Smooth foundation for flawless skin.'
     },
     {
         id: 3,
         name: 'Mascara',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$9.99',
         description: 'Lengthening mascara for bold lashes.'
     },
     {
         id: 4,
         name: 'Blush',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$11.49',
         description: 'Rosy blush for a natural glow.'
     },
     {
         id: 5,
         name: 'Eyeliner',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$7.99',
         description: 'Waterproof eyeliner for defined eyes.'
     },
     {
         id: 6,
         name: 'Concealer',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$13.99',
         description: 'Concealer for covering blemishes.'
     },
     {
         id: 7,
         name: 'Powder',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$10.99',
         description: 'Setting powder for a matte finish.'
     },
     {
         id: 8,
         name: 'Highlighter',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$14.99',
         description: 'Highlighter for a luminous glow.'
     },
     {
         id: 9,
         name: 'Bronzer',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$12.49',
         description: 'Bronzer for a sun-kissed look.'
     },
     {
         id: 10,
         name: 'Primer',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$15.99',
         description: 'Primer for long-lasting makeup.'
     },
     {
         id: 11,
         name: 'Setting Spray',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$8.99',
         description: 'Setting spray to lock in makeup.'
     },
     {
         id: 12,
         name: 'Lip Gloss',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$6.99',
         description: 'Glossy lip gloss for a shiny finish.'
     },
     {
         id: 13,
         name: 'Lip Balm',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$4.99',
         description: 'Moisturizing lip balm for soft lips.'
     },
     {
         id: 14,
         name: 'Brow Pencil',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$5.99',
         description: 'Brow pencil for defining eyebrows.'
     },
     {
         id: 15,
         name: 'Brow Gel',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$7.49',
         description: 'Brow gel for setting eyebrows in place.'
     },
     {
         id: 16,
         name: 'Eyeshadow',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$16.99',
         description: 'Pigmented eyeshadow for vibrant looks.'
     },
     {
         id: 17,
         name: 'Contour Kit',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$19.99',
         description: 'Contour kit for sculpting the face.'
     },
     {
         id: 18,
         name: 'Makeup Remover',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$8.49',
         description: 'Gentle makeup remover for all skin types.'
     },
     {
         id: 19,
         name: 'Face Mask',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$5.99',
         description: 'Nourishing face mask for a spa-like treatment.'
     },
     {
         id: 20,
         name: 'Serum',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$21.99',
         description: 'Serum for targeted skincare concerns.'
     },
     {
         id: 21,
         name: 'Moisturizer',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$17.99',
         description: 'Hydrating moisturizer for all-day moisture.'
     },
     {
         id: 22,
         name: 'Sunscreen',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$13.49',
         description: 'Broad-spectrum sunscreen for sun protection.'
     },
     {
         id: 23,
         name: 'Toner',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$9.49',
         description: 'Toner for balancing skin pH.'
     },
     {
         id: 24,
         name: 'Cleansing Oil',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$11.99',
         description: 'Cleansing oil for removing makeup and impurities.'
     },
     {
         id: 25,
         name: 'Sheet Mask',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$3.99',
         description: 'Hydrating sheet mask for a quick moisture boost.'
     },
     {
         id: 26,
         name: 'Face Wash',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$7.99',
         description: 'Gentle face wash for daily cleansing.'
     },
     {
         id: 27,
         name: 'Night Cream',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$18.99',
         description: 'Rich night cream for overnight hydration.'
     },
     {
         id: 28,
         name: 'Eye Cream',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$15.49',
         description: 'Eye cream for reducing dark circles and puffiness.'
     },
     {
         id: 29,
         name: 'Hand Cream',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$6.49',
         description: 'Hand cream for soft and smooth hands.'
     },
     {
         id: 30,
         name: 'Body Lotion',
-        image: 'https://github.com/htoopyaelinn56/hnm_product_images/blob/main/images/babymild_perfume.jpg?raw=true',
+        image: 'https://s3.tebi.io/hm-forever/Vaseline_Gold.png',
         price: '$13.99',
         description: 'Moisturizing body lotion for all-day hydration.'
     },
