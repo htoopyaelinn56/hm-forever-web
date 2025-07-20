@@ -147,6 +147,9 @@ body {
     width: 100%;
     color: #222;
     background: none;
+    height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .item-price {
