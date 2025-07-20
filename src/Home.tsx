@@ -32,7 +32,7 @@ function hexToRgba(hex: string, alpha: number) {
 // Simple in-memory cache for items list (invalidated on browser refresh)
 let itemsCache: ItemData[] | null = null;
 
-const Home: React.FC = () => {
+const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
     const [items, setItems] = useState<ItemData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -55,6 +55,11 @@ const Home: React.FC = () => {
             });
     }, []);
 
+    const filteredItems = items.filter(item =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchValue.toLowerCase())
+    );
+
     const shimmerCount = itemHexColors.length * 3;
     const shimmerArray = Array(shimmerCount).fill(0);
 
@@ -76,7 +81,7 @@ const Home: React.FC = () => {
 
     return (
         <div>
-            <AppBar title="H&M Forever"/>
+            {/* AppBar is now rendered in App.tsx */}
             {loading && (
                 <div className="home-container">
                     <div className="item-grid">
@@ -94,7 +99,7 @@ const Home: React.FC = () => {
             {!loading && !error && (
                 <div className="home-container">
                     <div className="item-grid">
-                        {items.map((item, idx) => {
+                        {filteredItems.map((item, idx) => {
                             const borderColor = getItemHexColor(idx);
                             const bgColor = hexToRgba(borderColor, 0.5);
                             return (

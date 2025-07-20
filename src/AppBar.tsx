@@ -4,9 +4,11 @@ import './AppBar.css';
 interface AppBarProps {
     title: string;
     onBackClick?: () => void; // Callback for back button click
+    searchValue?: string;
+    onSearchChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const AppBar: React.FC<AppBarProps> = ({title, onBackClick}) => {
+const AppBar: React.FC<AppBarProps> = ({title, onBackClick, searchValue, onSearchChange}) => {
     const [scrolled, setScrolled] = useState(false);
 
     // did update widget flutter equivalent title != previous title reset scroll to top
@@ -37,7 +39,12 @@ const AppBar: React.FC<AppBarProps> = ({title, onBackClick}) => {
                 <div className="custom-appbar-title">{title}</div>
             </div>
             {!onBackClick && <div className="custom-appbar-search">
-                <input type="text" placeholder="Search..."/>
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchValue || ''}
+                    onChange={onSearchChange}
+                />
             </div>}
         </div>
     );
