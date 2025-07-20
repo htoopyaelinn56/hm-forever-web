@@ -5,10 +5,11 @@ import Detail from './Detail';
 import AppBar from './AppBar';
 import './App.css';
 
-function App() {
+function AppContent() {
   const [, setScrolled] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const [searchValue, setSearchValue] = useState('');
+  const location = useLocation();
 
   useEffect(() => {
     const content = contentRef.current;
@@ -20,19 +21,31 @@ function App() {
     return () => content.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (location.pathname.startsWith('/detail/')) {
+      setSearchValue('');
+    }
+  }, [location.pathname]);
+
+  return (
+    <div>
+      <AppBar
+        title="H&M Forever"
+        searchValue={searchValue}
+        onSearchChange={e => setSearchValue(e.target.value)}
+      />
+      <Routes>
+        <Route path="/" element={<Home searchValue={searchValue} />} />
+        <Route path="/detail/:id" element={<Detail />} />
+      </Routes>
+    </div>
+  );
+}
+
+function App() {
   return (
     <Router>
-      <div>
-        <AppBar
-          title="H&M Forever"
-          searchValue={searchValue}
-          onSearchChange={e => setSearchValue(e.target.value)}
-        />
-        <Routes>
-          <Route path="/" element={<Home searchValue={searchValue} />} />
-          <Route path="/detail/:id" element={<Detail />} />
-        </Routes>
-      </div>
+      <AppContent />
     </Router>
   );
 }
