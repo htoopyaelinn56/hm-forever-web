@@ -32,3 +32,15 @@ export async function fetchItems(databaseId: string, collectionId: string): Prom
         image: doc.image,
     }));
 }
+
+// Function to fetch a single item by ID from Appwrite database
+export async function getItem(databaseId: string, collectionId: string, itemId: string): Promise<ItemData> {
+    const response = await databases.getDocument(databaseId, collectionId, itemId);
+    return {
+        id: response.$id,
+        name: response.name,
+        price: response.price,
+        description: response.description,
+        image: response.image,
+    };
+}
