@@ -1,23 +1,30 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useLocation} from 'react-router-dom';
 import AppBar from './AppBar';
 import './Detail.css';
 import {getItem, databaseId, collectionId, ItemData} from './api/appwriteService';
 
+// Simple in-memory cache for item details
+const itemCache: Record<string, ItemData> = {};
+
 const Detail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
-    const [item, setItem] = useState<ItemData | null>(null);
-    const [loading, setLoading] = useState(true);
+    const location = useLocation();
+    const passedItem = (location.state as { item?: ItemData })?.item;
+    const [item, setItem] = useState<ItemData | null>(passedItem || null);
+    const [loading, setLoading] = useState(!passedItem);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        if (!id) {
-            setError('No item ID provided');
+        if (item || !id) return;
+        if (itemCache[id]) {
+            setItem(itemCache[id]);
             setLoading(false);
             return;
         }
         getItem(databaseId, collectionId, id)
             .then(data => {
+                itemCache[id] = data;
                 setItem(data);
                 setLoading(false);
             })
@@ -25,7 +32,7 @@ const Detail: React.FC = () => {
                 setError('Failed to fetch item details');
                 setLoading(false);
             });
-    }, [id]);
+    }, [id, item]);
 
     return (
         <div>

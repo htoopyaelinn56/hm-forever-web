@@ -29,14 +29,23 @@ function hexToRgba(hex: string, alpha: number) {
     return `rgba(${r},${g},${b},${alpha})`;
 }
 
+// Simple in-memory cache for items list (invalidated on browser refresh)
+let itemsCache: ItemData[] | null = null;
+
 const Home: React.FC = () => {
     const [items, setItems] = useState<ItemData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        if (itemsCache) {
+            setItems(itemsCache);
+            setLoading(false);
+            return;
+        }
         fetchItems(databaseId, collectionId)
             .then(data => {
+                itemsCache = data;
                 setItems(data);
                 setLoading(false);
             })
@@ -89,7 +98,12 @@ const Home: React.FC = () => {
                             const borderColor = getItemHexColor(idx);
                             const bgColor = hexToRgba(borderColor, 0.5);
                             return (
-                                <Link key={item.id} to={`/detail/${item.id}`} className="item-link">
+                                <Link
+                                    key={item.id}
+                                    to={`/detail/${item.id}`}
+                                    className="item-link"
+                                    state={{ item }}
+                                >
                                     <div className="card-stack tooltip-parent">
                                         <div className="card-bg" style={{background: bgColor}}/>
                                         <div className="item-card">
