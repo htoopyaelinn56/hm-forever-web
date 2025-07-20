@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams, useLocation} from 'react-router-dom';
 import AppBar from './AppBar';
 import './Detail.css';
-import {getItem, databaseId, collectionId, ItemData} from './api/appwriteService';
+import {getItem, ItemData} from './api/appwriteService';
 
 // Simple in-memory cache for item details
 const itemCache: Record<string, ItemData> = {};
@@ -22,7 +22,7 @@ const Detail: React.FC = () => {
             setLoading(false);
             return;
         }
-        getItem(databaseId, collectionId, id)
+        getItem(id)
             .then(data => {
                 itemCache[id] = data;
                 setItem(data);

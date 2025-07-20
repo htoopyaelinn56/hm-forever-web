@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import AppBar from './AppBar';
-import {collectionId, databaseId, fetchItems, ItemData} from './api/appwriteService';
+import {fetchItems, ItemData} from './api/appwriteService';
 
 // Utility to cycle through a fixed set of background colors for item name and price
 const itemHexColors = [
@@ -43,7 +42,7 @@ const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
             setLoading(false);
             return;
         }
-        fetchItems(databaseId, collectionId)
+        fetchItems()
             .then(data => {
                 itemsCache = data;
                 setItems(data);

@@ -17,13 +17,24 @@ client
 
 const databases = new Databases(client);
 
-export const databaseId = process.env.REACT_APP_APPWRITE_DATABASE_ID!;
-export const collectionId = process.env.REACT_APP_APPWRITE_COLLECTION_ID!;
+const APPWRITE_ENDPOINT = 'https://cloud.appwrite.io/v1';
+const APPWRITE_PROJECT = process.env.REACT_APP_APPWRITE_PROJECT_ID!;
+const APPWRITE_DATABASE = process.env.REACT_APP_APPWRITE_DATABASE_ID!;
+const APPWRITE_COLLECTION = process.env.REACT_APP_APPWRITE_COLLECTION_ID!;
+const APPWRITE_KEY = process.env.REACT_APP_APPWRITE_KEY!;
 
-// Function to fetch items from Appwrite database
-export async function fetchItems(databaseId: string, collectionId: string): Promise<ItemData[]> {
-    const response = await databases.listDocuments(databaseId, collectionId);
-    // Map Appwrite documents to ItemData
+// REST API: Fetch items
+export async function fetchItems(): Promise<ItemData[]> {
+    const url = `${APPWRITE_ENDPOINT}/databases/${APPWRITE_DATABASE}/collections/${APPWRITE_COLLECTION}/documents`;
+    const res = await fetch(url, {
+        headers: {
+            'X-Appwrite-Project': APPWRITE_PROJECT,
+            'X-Appwrite-Key': APPWRITE_KEY,
+            'Content-Type': 'application/json',
+        },
+    });
+    if (!res.ok) throw new Error('Failed to fetch items');
+    const response = await res.json();
     return response.documents.map((doc: any) => ({
         id: doc.$id,
         name: doc.name,
@@ -33,14 +44,23 @@ export async function fetchItems(databaseId: string, collectionId: string): Prom
     }));
 }
 
-// Function to fetch a single item by ID from Appwrite database
-export async function getItem(databaseId: string, collectionId: string, itemId: string): Promise<ItemData> {
-    const response = await databases.getDocument(databaseId, collectionId, itemId);
+// REST API: Fetch single item
+export async function getItem(itemId: string): Promise<ItemData> {
+    const url = `${APPWRITE_ENDPOINT}/databases/${APPWRITE_DATABASE}/collections/${APPWRITE_COLLECTION}/documents/${itemId}`;
+    const res = await fetch(url, {
+        headers: {
+            'X-Appwrite-Project': APPWRITE_PROJECT,
+            'X-Appwrite-Key': APPWRITE_KEY,
+            'Content-Type': 'application/json',
+        },
+    });
+    if (!res.ok) throw new Error('Failed to fetch item');
+    const doc = await res.json();
     return {
-        id: response.$id,
-        name: response.name,
-        price: response.price,
-        description: response.description,
-        image: response.image,
+        id: doc.$id,
+        name: doc.name,
+        price: doc.price,
+        description: doc.description,
+        image: doc.image,
     };
 }
