@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {fetchItems, ItemData} from './api/appwriteService';
+import {formatPriceWithCurrency} from './utils/formatters';
 
 // Utility to cycle through a fixed set of background colors for item name and price
 const itemHexColors = [
@@ -114,7 +115,7 @@ const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
                                             <img src={item.image} alt={item.name} className="item-image-full" style={{background: bgColor}}/>
                                             <div className="item-info">
                                                 <div className="item-name-left">{item.name}</div>
-                                                <div className="item-price">{item.price} Ks</div>
+                                                <div className="item-price">{formatPriceWithCurrency(Math.round(item.price || 0))}</div>
                                             </div>
                                         </div>
                                     </div>

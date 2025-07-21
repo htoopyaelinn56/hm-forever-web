@@ -3,6 +3,7 @@ import {useParams, useLocation} from 'react-router-dom';
 import AppBar from './AppBar';
 import './Detail.css';
 import {getItem, ItemData} from './api/appwriteService';
+import {formatPriceWithCurrency} from './utils/formatters';
 
 // Simple in-memory cache for item details
 const itemCache: Record<string, ItemData> = {};
@@ -70,9 +71,9 @@ const Detail: React.FC = () => {
             {!loading && !error && item && (
                 <div className="detail-container">
                     <img src={item.image} alt={item.name} className="detail-image" />
-                   <div>
+                   <div className="detail-content">
                        <h2 className="detail-title">{item.name}</h2>
-                       <div className="detail-price">{item.price?.toFixed(0)} Ks</div>
+                       <div className="detail-price">{formatPriceWithCurrency(Math.round(item.price || 0))}</div>
                        <p className="detail-description">{item.description}</p>
                    </div>
                 </div>
