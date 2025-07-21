@@ -70,8 +70,8 @@ const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
                 <div className="item-card shimmer">
                     <div className="item-image-full shimmer-img" style={{background: bgColor}} />
                     <div className="item-info">
-                        <div className="shimmer-text shimmer-title" />
-                        <div className="shimmer-text shimmer-price" />
+                        <div className="item-name-left"/>
+                        <div className="item-price"/>
                     </div>
                 </div>
             </div>

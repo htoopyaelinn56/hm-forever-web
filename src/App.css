@@ -242,13 +242,18 @@ body {
     }
 
     .item-image-full {
-        height: 200px;
-        min-height: 120px;
+        height: 220px;
+        min-height: 150px;
     }
 
     .card-stack:hover .card-bg{
         top: 8px;
         left: 8px;
+    }
+
+    .item-info{
+        padding: 0;
+        height: 70px;
     }
 }
 
