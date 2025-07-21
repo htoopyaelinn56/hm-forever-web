@@ -62,7 +62,7 @@ function AppContent() {
   return (
     <div>
       <AppBar
-        title="H&M Forever"
+        title="HM Forever"
         searchValue={searchValue}
         onSearchChange={e => setSearchValue(e.target.value)}
       />
