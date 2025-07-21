@@ -52,7 +52,7 @@ const Detail: React.FC = () => {
                     <img src={item.image} alt={item.name} className="detail-image" />
                     <h2 className="detail-title">{item.name}</h2>
                     <p className="detail-description">{item.description}</p>
-                    <div className="detail-price">${item.price?.toFixed(2)}</div>
+                    <div className="detail-price">{item.price?.toFixed(0)} Ks</div>
                 </div>
             )}
         </div>

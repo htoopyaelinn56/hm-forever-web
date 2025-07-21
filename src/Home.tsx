@@ -114,7 +114,7 @@ const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
                                             <img src={item.image} alt={item.name} className="item-image-full" style={{background: bgColor}}/>
                                             <div className="item-info">
                                                 <div className="item-name-left">{item.name}</div>
-                                                <div className="item-price">${item.price.toFixed(2)}</div>
+                                                <div className="item-price">{item.price} Ks</div>
                                             </div>
                                         </div>
                                     </div>
