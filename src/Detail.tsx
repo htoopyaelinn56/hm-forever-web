@@ -16,12 +16,32 @@ const Detail: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        if (item || !id) return;
+        // If we don't have an ID, we can't fetch anything
+        if (!id) {
+            setError('No item ID provided');
+            setLoading(false);
+            return;
+        }
+
+        // If we already have an item from navigation state, no need to fetch
+        if (passedItem) {
+            // Cache the passed item for future use
+            itemCache[id] = passedItem;
+            setItem(passedItem);
+            setLoading(false);
+            return;
+        }
+
+        // Check cache first
         if (itemCache[id]) {
             setItem(itemCache[id]);
             setLoading(false);
             return;
         }
+
+        // Fetch from server (this happens on refresh or direct URL access)
+        setLoading(true);
+        setError(null);
         getItem(id)
             .then(data => {
                 itemCache[id] = data;
@@ -32,7 +52,7 @@ const Detail: React.FC = () => {
                 setError('Failed to fetch item details');
                 setLoading(false);
             });
-    }, [id, item]);
+    }, [id, passedItem]);
 
     return (
         <div>
