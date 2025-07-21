@@ -169,14 +169,6 @@ body {
     margin-top: 0;
 }
 
-/* Detail Page */
-.detail-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 32px;
-    padding: 40px 20px 15px 15px;
-}
-
 .detail-back {
     align-self: flex-start;
     margin-bottom: 24px;
@@ -202,13 +194,6 @@ body {
     align-items: center;
 }
 
-.detail-image {
-    object-fit: cover;
-    border-radius: 16px;
-    border: 2px solid #000;
-    margin-bottom: 24px;
-    background: #f3e6ef;
-}
 
 .detail-name {
     font-size: 1.5rem;

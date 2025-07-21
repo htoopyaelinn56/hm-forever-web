@@ -70,9 +70,11 @@ const Detail: React.FC = () => {
             {!loading && !error && item && (
                 <div className="detail-container">
                     <img src={item.image} alt={item.name} className="detail-image" />
-                    <h2 className="detail-title">{item.name}</h2>
-                    <p className="detail-description">{item.description}</p>
-                    <div className="detail-price">{item.price?.toFixed(0)} Ks</div>
+                   <div>
+                       <h2 className="detail-title">{item.name}</h2>
+                       <div className="detail-price">{item.price?.toFixed(0)} Ks</div>
+                       <p className="detail-description">{item.description}</p>
+                   </div>
                 </div>
             )}
         </div>
