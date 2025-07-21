@@ -3,9 +3,9 @@
 This document outlines the technical steps required to set up to run the web application, primarily focusing on replicating the Appwrite database structure.
 
 ## 1. Environment Variables (.env)
-REACT_APP_APPWRITE_PROJECT_ID=YOUR_APPWRITE_PROJECT_ID
-REACT_APP_APPWRITE_DATABASE_ID=YOUR_APPWRITE_DATABASE_ID
-REACT_APP_APPWRITE_COLLECTION_ID=YOUR_APPWRITE_COLLECTION_ID
+REACT_APP_APPWRITE_PROJECT_ID=YOUR_APPWRITE_PROJECT_ID<br>
+REACT_APP_APPWRITE_DATABASE_ID=YOUR_APPWRITE_DATABASE_ID<br>
+REACT_APP_APPWRITE_COLLECTION_ID=YOUR_APPWRITE_COLLECTION_ID<br>
 REACT_APP_APPWRITE_KEY=YOUR_APPWRITE_API_KEY
 
 Before running the application, you'll need to create a `.env` file in the root directory of your project. This file will store your Appwrite project credentials securely.
