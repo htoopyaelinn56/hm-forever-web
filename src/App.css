@@ -205,6 +205,7 @@ body {
 .detail-image {
     object-fit: cover;
     border-radius: 16px;
+    border: 2px solid #000;
     margin-bottom: 24px;
     background: #f3e6ef;
 }
