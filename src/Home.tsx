@@ -112,9 +112,9 @@ const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
                                     <div className="card-stack tooltip-parent">
                                         <div className="card-bg" style={{background: bgColor}}/>
                                         <div className="item-card">
-                                            <img src={item.image} alt={item.name} className="item-image-full" style={{background: bgColor}}/>
+                                            <img src={item.image} alt={item.displayName} className="item-image-full" style={{background: bgColor}}/>
                                             <div className="item-info">
-                                                <div className="item-name-left">{item.name}</div>
+                                                <div className="item-name-left">{item.displayName}</div>
                                                 <div className="item-price">{formatPriceWithCurrency(Math.round(item.price || 0))}</div>
                                             </div>
                                         </div>

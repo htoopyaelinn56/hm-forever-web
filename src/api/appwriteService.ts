@@ -2,6 +2,7 @@
 export interface ItemData {
     id: string;
     name: string;
+    displayName: string;
     price: number;
     description: string;
     image: string;
@@ -31,6 +32,7 @@ export async function fetchItems(): Promise<ItemData[]> {
     return response.documents.map((doc: any) => ({
         id: doc.$id,
         name: doc.name,
+        displayName: doc.displayName || doc.name,
         price: doc.price,
         description: doc.description,
         image: doc.image,
@@ -52,6 +54,7 @@ export async function getItem(itemId: string): Promise<ItemData> {
     return {
         id: doc.$id,
         name: doc.name,
+        displayName: doc.displayName || doc.name,
         price: doc.price,
         description: doc.description,
         image: doc.image,
