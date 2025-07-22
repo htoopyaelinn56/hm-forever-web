@@ -39,11 +39,12 @@ You need to create one database and one collection within your Appwrite project.
 
 Once you've created the collection, you need to define the following attributes (fields) for it. These attributes directly map to the `ItemData` interface used in the application's frontend.
 
-| Attribute Name | Type    | Required | Array | Default Value | Notes                                   |
-| :------------- | :------ | :------- | :---- | :------------ | :-------------------------------------- |
-| `name`         | String  | Yes      | No    | None          | Product name                            |
-| `price`        | Float   | Yes      | No    | None          | Product price (e.g., `19.99`)           |
-| `description`  | String  | Yes      | No    | None          | Detailed product description            |
+| Attribute Name | Type    | Required | Array | Default Value | Notes                                                            |
+|:---------------| :------ | :------- | :---- | :------------ |:-----------------------------------------------------------------|
+| `name`         | String  | Yes      | No    | None          | Product name (e.g., `Descriptive Product Name`)                  |
+| `displayName`  | String  | Yes      | No    | None          | Product display name (e.g., `Shorter Product Name`)              |
+| `price`        | Float   | Yes      | No    | None          | Product price (e.g., `19.99`)                                    |
+| `description`  | String  | Yes      | No    | None          | Detailed product description                                     |
 | `image`        | String  | Yes      | No    | None          | URL to the product image (e.g., `https://example.com/image.jpg`) |
 
 **Note on `id`:** The `id` property in the `ItemData` interface (`doc.$id`) refers to Appwrite's automatically generated document ID (`$id`). You do **not** need to create a separate attribute named `id` in your collection.
