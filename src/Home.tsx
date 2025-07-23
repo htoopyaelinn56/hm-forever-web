@@ -29,6 +29,22 @@ function hexToRgba(hex: string, alpha: number) {
     return `rgba(${r},${g},${b},${alpha})`;
 }
 
+// Utility to calculate dynamic font size based on text length (mobile only)
+function getDynamicFontSize(text: string, windowWidth: number): string {
+    // Only apply dynamic sizing on mobile devices
+    if (windowWidth > 768) {
+        return '1.08rem'; // Keep original size for desktop
+    }
+
+    const length = text.length;
+
+    if (length <= 10) return '1.08rem';      // Short text - normal size
+    if (length <= 15) return '1rem';        // Medium text - slightly smaller
+    if (length <= 20) return '0.9rem';      // Long text - smaller
+    if (length <= 25) return '0.8rem';      // Very long text - much smaller
+    return '0.7rem';                        // Extra long text - smallest
+}
+
 // Simple in-memory cache for items list (invalidated on browser refresh)
 let itemsCache: ItemData[] | null = null;
 
@@ -36,6 +52,16 @@ const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
     const [items, setItems] = useState<ItemData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         if (itemsCache) {
@@ -114,7 +140,7 @@ const Home: React.FC<{ searchValue: string }> = ({ searchValue }) => {
                                         <div className="item-card">
                                             <img src={item.image} alt={item.displayName} className="item-image-full" style={{background: bgColor}}/>
                                             <div className="item-info">
-                                                <div className="item-name-left">{item.displayName}</div>
+                                                <div className="item-name-left" style={{fontSize: getDynamicFontSize(item.displayName, windowWidth)}}>{item.displayName}</div>
                                                 <div className="item-price">{formatPriceWithCurrency(Math.round(item.price || 0))}</div>
                                             </div>
                                         </div>
