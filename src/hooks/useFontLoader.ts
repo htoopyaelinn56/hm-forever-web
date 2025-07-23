@@ -8,7 +8,7 @@ export const useFontLoader = (fontFamily: string, fontWeight?: string) => {
       try {
         // Check if FontFace API is supported
         if ('fonts' in document) {
-          // Wait for the specific font to be loaded
+          // Wait for the specific font1 to be loaded
           await document.fonts.load(`${fontWeight || '400'} 16px "${fontFamily}"`);
           
           // Double check if the font is actually available
