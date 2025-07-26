@@ -82,7 +82,7 @@ const Detail: React.FC = () => {
                 <div className="detail-container">
                     <div>
                         <img src={selectedImage || item.image} alt={item.name} className="detail-image" />
-                        {item.imageList && item.imageList.length > 0 && (
+                        {item.imageList && item.imageList.length > 1 && (
                             <div>
                                 {item.imageList.map((imgUrl: string, idx: number) => (
                                     <img
