@@ -6,6 +6,7 @@ export interface ItemData {
     price: number;
     description: string;
     image: string;
+    imageList: string[];
 }
 
 
@@ -35,7 +36,8 @@ export async function fetchItems(): Promise<ItemData[]> {
         displayName: doc.displayName || doc.name,
         price: doc.price,
         description: doc.description,
-        image: doc.image,
+        image: Array.isArray(doc.imageList) && doc.imageList.length > 0 ? doc.imageList[0] : '',
+        imageList: doc.imageList || [],
     }));
 }
 
@@ -57,6 +59,7 @@ export async function getItem(itemId: string): Promise<ItemData> {
         displayName: doc.displayName || doc.name,
         price: doc.price,
         description: doc.description,
-        image: doc.image,
+        image: Array.isArray(doc.imageList) && doc.imageList.length > 0 ? doc.imageList[0] : '',
+        imageList: doc.imageList || [],
     };
 }
