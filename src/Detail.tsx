@@ -15,6 +15,7 @@ const Detail: React.FC = () => {
     const [item, setItem] = useState<ItemData | null>(passedItem || null);
     const [loading, setLoading] = useState(!passedItem);
     const [error, setError] = useState<string | null>(null);
+    const [selectedImage, setSelectedImage] = useState<string>('');
 
     useEffect(() => {
         // If we don't have an ID, we can't fetch anything
@@ -55,6 +56,15 @@ const Detail: React.FC = () => {
             });
     }, [id, passedItem]);
 
+    // Set initial selected image when item is loaded
+    useEffect(() => {
+        if (item && item.imageList && item.imageList.length > 0) {
+            setSelectedImage(item.imageList[0]);
+        } else if (item && item.image) {
+            setSelectedImage(item.image);
+        }
+    }, [item]);
+
     return (
         <div>
             <AppBar title="Item Detail" onBackClick={() => window.history.back()}/>
@@ -70,7 +80,31 @@ const Detail: React.FC = () => {
             )}
             {!loading && !error && item && (
                 <div className="detail-container">
-                    <img src={item.image} alt={item.name} className="detail-image" />
+                    <div>
+                        <img src={selectedImage || item.image} alt={item.name} className="detail-image" />
+                        {item.imageList && item.imageList.length > 0 && (
+                            <div>
+                                {item.imageList.map((imgUrl: string, idx: number) => (
+                                    <img
+                                        key={idx}
+                                        src={imgUrl}
+                                        alt={`${item.name} ${idx + 1}`}
+                                        style={{
+                                            width: 60,
+                                            height: 60,
+                                            objectFit: 'cover',
+                                            margin: 4,
+                                            borderRadius: 8,
+                                            border: selectedImage === imgUrl ? '2px solid #000' : '2px solid transparent',
+                                            opacity: selectedImage === imgUrl ? 1 : 0.5,
+                                            cursor: 'pointer'
+                                        }}
+                                        onClick={() => setSelectedImage(imgUrl)}
+                                    />
+                                ))}
+                            </div>
+                        )}
+                    </div>
                    <div className="detail-content">
                        <h2 className="detail-title">{item.name}</h2>
                        <div className="detail-price">{formatPriceWithCurrency(Math.round(item.price || 0))}</div>

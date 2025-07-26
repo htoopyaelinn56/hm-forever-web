@@ -10,7 +10,6 @@
     object-fit: cover;
     border-radius: 16px;
     border: 2px solid #000;
-    margin-bottom: 24px;
     background: #f3e6ef;
     width: 500px;
     height: 500px;
@@ -124,6 +123,6 @@
         width: 100%;
         height: auto;
         max-width: 480px;
-        margin-bottom: 16px;
+        margin-bottom: 4px;
     }
 }
