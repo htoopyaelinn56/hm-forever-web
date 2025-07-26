@@ -95,6 +95,7 @@ const Detail: React.FC = () => {
                                             objectFit: 'cover',
                                             margin: 4,
                                             borderRadius: 8,
+                                            background: 'rgba(0, 0, 0, 0.1)',
                                             border: selectedImage === imgUrl ? '2px solid #000' : '2px solid transparent',
                                             opacity: selectedImage === imgUrl ? 1 : 0.5,
                                             cursor: 'pointer'
